@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  @apply bg-charcoal text-ivory font-sans antialiased transition-colors duration-500;
+}
+
+body.theme-light {
+  @apply bg-champagne text-charcoal-deep;
+}
+
+.gold-divider {
+  @apply h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(120deg, #c9a227, #f3e3a3, #d4af37, #f3e3a3, #c9a227);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+
+.focus-gold:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+}
