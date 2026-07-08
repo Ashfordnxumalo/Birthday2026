@@ -3,38 +3,42 @@
 //  for event details. Keys (Formspree/EmailJS) come from .env.
 // =============================================================
 
+function musicFile(filename) {
+  return filename ? `${import.meta.env.BASE_URL}music/${filename}` : "";
+}
+
 export const config = {
   // ---- Guest of honor & event ----
-  honoreeName: "Jane Doe",            // TODO: guest of honor's name
-  milestone: "50th Birthday",         // e.g. "50th Birthday", "Celebrating 40 Years"
-  tagline: "An evening of elegance",  // short subtitle under the name
+  honoreeName: "Malusi Ndaba",            // TODO: guest of honor's name
+  milestone: "45th Birthday",         // e.g. "50th Birthday", "Celebrating 40 Years"
+  tagline: "An afternoon of elegance and celebration",  // short subtitle under the name
 
   // ---- Date & time ----
   // ISO format. Keep the timezone offset correct for your venue.
-  eventDateISO: "2026-10-10T19:00:00+02:00", // 10 Oct 2026, 7:00 PM (SAST)
+  eventDateISO: "2026-10-10T10:00:00+02:00", // 10 Oct 2026, 7:00 PM (SAST)
   displayDate: "Saturday, 10 October 2026",
-  displayTime: "7:00 PM until late",
+  displayTime: "10:00 AM until late",
 
   // ---- Venue ----
-  venueName: "The Grand Ballroom",    // TODO
-  venueAddress: "123 Celebration Ave, Johannesburg", // TODO
+  venueName: "The Ndaba Residence",    // TODO
+  venueAddress: "Mpindweni Ext, Mthatha", // TODO
   // Google Maps embed query (address or place name). URL-encoded automatically.
-  mapQuery: "The Grand Ballroom Johannesburg",
+  mapQuery: "Mpindweni Ext Mthatha",
 
   // ---- Details ----
   dressCode: "Black Tie",
-  hostName: "The Doe Family",         // TODO
-  hostContactEmail: "host@example.com", // TODO — shown in footer
-  hostContactPhone: "+27 00 000 0000",  // TODO
+  hostName: "The Ndaba Family",         // TODO
+  hostContactEmail: "Ashford@mnx-consulting.co.za", // TODO — shown in footer
+  hostContactPhone: "+27815000053",  // TODO
 
   // ---- Calendar (.ics) ----
-  calendarTitle: "Jane's 50th Birthday — Black Tie",
+  calendarTitle: "Melusi Ndaba's 45th Birthday — Black Tie",
   calendarDescription: "Join us for an elegant black-tie celebration.",
   calendarDurationHours: 5,           // event length for the .ics file
 
   // ---- Background music (optional) ----
-  // Drop an mp3 in /public and reference it here, or leave "" to hide the toggle.
-  musicSrc: "/music/ambient.mp3",
+  // Drop an mp3 in /public/music and reference its filename here, or leave "" to hide the toggle.
+  musicSrc: musicFile("ambient.mp3"),
 
   // ---- Integrations: values read from .env (see .env.example) ----
   formspreeEndpoint: import.meta.env.VITE_FORMSPREE_ENDPOINT || "",
@@ -45,7 +49,7 @@ export const config = {
   },
 
   // ---- Site / sharing ----
-  siteUrl: "https://your-invite.netlify.app", // used by Share button
+  siteUrl: "https://mnx-consulting.co.za", // used by Share button
 };
 
 export default config;

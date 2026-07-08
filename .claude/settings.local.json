@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4173/)",
+      "Bash(curl -s http://localhost:4173/)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 4173 -ErrorAction SilentlyContinue)",
+      "Bash(curl -s https://mnx-consulting.co.za/events/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://mnx-consulting.co.za/assets/index-DX8v2N2z.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://mnx-consulting.co.za/events/assets/index-DX8v2N2z.js)"
+    ]
+  }
+}

@@ -9,7 +9,7 @@ const initialForm = {
   email: "",
   guests: "1",
   attending: "yes",
-  dietary: "",
+  mobile: "",
   message: "",
 };
 
@@ -220,14 +220,14 @@ export default function RSVP() {
           </div>
 
           <div>
-            <label htmlFor="dietary" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
-              Dietary Restrictions (optional)
+            <label htmlFor="mobile" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
+              Please Share Your Mobile Number
             </label>
             <input
-              id="dietary"
-              name="dietary"
-              type="text"
-              value={form.dietary}
+              id="mobile"
+              name="mobile"
+              type="tel"
+              value={form.mobile}
               onChange={handleChange}
               className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ivory theme-light:text-charcoal-deep outline-none"
             />

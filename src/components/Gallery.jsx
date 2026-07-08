@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "./Reveal.jsx";
 
-const PLACEHOLDER_PHOTOS = Array.from({ length: 8 }, (_, i) => ({
+const PHOTO_COUNT = 6;
+
+const PHOTOS = Array.from({ length: PHOTO_COUNT }, (_, i) => ({
   id: i,
-  src: `https://picsum.photos/seed/blacktie-${i}/600/600`,
-  alt: `Memory placeholder photo ${i + 1}`,
+  src: `${import.meta.env.BASE_URL}photos/${i + 1}.jpeg`,
+  alt: `Memory photo ${i + 1}`,
 }));
 
 export default function Gallery() {
@@ -19,7 +21,7 @@ export default function Gallery() {
       </Reveal>
 
       <div className="mx-auto grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-4">
-        {PLACEHOLDER_PHOTOS.map((photo, i) => (
+        {PHOTOS.map((photo, i) => (
           <Reveal key={photo.id} delay={(i % 4) * 0.08}>
             <button
               type="button"
