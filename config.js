@@ -26,7 +26,7 @@ export const config = {
   mapQuery: "Mpindweni Ext Mthatha",
 
   // ---- Details ----
-  dressCode: "Black Tie",
+  dressCode: "Glitz & Glam",
   hostName: "Designed By - Ash",         // TODO
   hostContactEmail: "Ashford@mnx-consulting.co.za", // TODO — shown in footer
   hostContactPhone: "+27815000053",  // TODO
