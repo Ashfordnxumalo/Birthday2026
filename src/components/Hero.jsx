@@ -57,7 +57,10 @@ export default function Hero() {
       >
         <div className="gold-divider" />
         <p className="font-display text-3xl tracking-wide text-gold sm:text-4xl">
-          10 October 2026
+          {config.displayDate}
+        </p>
+        <p className="text-sm tracking-wide text-ivory/70 sm:text-base">
+          {config.displayTime}
         </p>
         <div className="gold-divider" />
       </motion.div>

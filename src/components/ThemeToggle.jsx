@@ -1,8 +1,11 @@
 import React from "react";
 import { useTheme } from "../lib/ThemeContext.jsx";
+import { config } from "../../config.js";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+
+  if (!config.showThemeToggle) return null;
 
   return (
     <button

@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { config } from "../../config.js";
 
 const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    if (typeof window === "undefined") return "dark";
-    return localStorage.getItem("invite-theme") || "dark";
+    if (typeof window === "undefined") return config.defaultTheme || "dark";
+    return localStorage.getItem("invite-theme") || config.defaultTheme || "dark";
   });
 
   useEffect(() => {

@@ -15,9 +15,9 @@ export const config = {
 
   // ---- Date & time ----
   // ISO format. Keep the timezone offset correct for your venue.
-  eventDateISO: "2026-10-10T10:00:00+02:00", // 10 Oct 2026, 7:00 PM (SAST)
+  eventDateISO: "2026-10-10T14:00:00+02:00", // 10 Oct 2026, 7:00 PM (SAST)
   displayDate: "Saturday, 10 October 2026",
-  displayTime: "10:00 AM until late",
+  displayTime: "14:00 PM until late",
 
   // ---- Venue ----
   venueName: "The Ndaba Residence",    // TODO
@@ -27,7 +27,7 @@ export const config = {
 
   // ---- Details ----
   dressCode: "Black Tie",
-  hostName: "The Ndaba Family",         // TODO
+  hostName: "Designed By - Ash",         // TODO
   hostContactEmail: "Ashford@mnx-consulting.co.za", // TODO — shown in footer
   hostContactPhone: "+27815000053",  // TODO
 
@@ -38,7 +38,13 @@ export const config = {
 
   // ---- Background music (optional) ----
   // Drop an mp3 in /public/music and reference its filename here, or leave "" to hide the toggle.
-  musicSrc: musicFile("ambient.mp3"),
+  musicSrc: musicFile("Hymn for Taiwa.mp3"),
+
+  // ---- Theme toggle (moon/sun button, optional) ----
+  // Set to false to hide the toggle button entirely.
+  showThemeToggle: false,
+  // Theme shown on first visit, before the guest picks one: "dark" or "light".
+  defaultTheme: "dark",
 
   // ---- Integrations: values read from .env (see .env.example) ----
   formspreeEndpoint: import.meta.env.VITE_FORMSPREE_ENDPOINT || "",

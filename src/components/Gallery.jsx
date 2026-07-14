@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "./Reveal.jsx";
 
-const PHOTO_COUNT = 6;
+const PHOTO_COUNT = 9;
 
 const PHOTOS = Array.from({ length: PHOTO_COUNT }, (_, i) => ({
   id: i,
