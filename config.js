@@ -55,7 +55,7 @@ export const config = {
   },
 
   // ---- Site / sharing ----
-  siteUrl: "https://mnx-consulting.co.za", // used by Share button
+  siteUrl: "https://mnx-consulting.co.za/events", // used by Share button
 };
 
 export default config;
