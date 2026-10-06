@@ -60,8 +60,10 @@ export const config = {
   // On the day (from 2 hours before the start until the next morning) the site
   // opens straight on the Programme tab instead of the invitation.
   eventNightAutoOpen: true,
-  // Number of tables in the venue (Story Wall table picker + leaderboard).
-  tableCount: 12,
+  // Number of numbered tables in the venue (Story Wall table picker + leaderboard).
+  tableCount: 15,
+  // Adds a "Main Table" option (stored as table 0). Set "" to leave it out.
+  mainTableLabel: "Main Table",
 
   // Final programme. `person` is optional. Messages under "Birthday messages"
   // go in `messages`. Keep names exactly as they should appear on screen.

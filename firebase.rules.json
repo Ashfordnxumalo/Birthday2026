@@ -7,7 +7,7 @@
         ".write": "!data.exists() || !newData.exists()",
         ".validate": "newData.hasChildren(['name', 'table', 'story', 'device', 'ts'])",
         "name": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40" },
-        "table": { ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 100" },
+        "table": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
         "story": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 280" },
         "device": { ".validate": "newData.isString() && newData.val().length <= 40" },
         "ts": { ".validate": "newData.isNumber()" },

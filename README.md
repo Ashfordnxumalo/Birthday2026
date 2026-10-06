@@ -91,7 +91,8 @@ print a QR code for it:
 
 - `…/events/?tab=programme` is the running order of the day.
 - `…/events/?tab=stories` is the table game. Add `&table=4` to pre-select a
-  table, which works well for QR codes printed on each table.
+  table, which works well for QR codes printed on each table. Use
+  `&table=main` for the main table.
 
 On the event day (from 2 hours before the start), the site opens on the
 Programme tab automatically. Edit the running order, the Programme Director,

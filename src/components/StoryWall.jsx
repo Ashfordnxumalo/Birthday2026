@@ -20,10 +20,20 @@ const POINTS_PER_STORY = 10;
 const POINTS_PER_HEART = 2;
 const PROFILE_KEY = "story-wall-profile";
 
-const TABLES = Array.from({ length: config.tableCount }, (_, i) => i + 1);
+// The main table is stored as table 0 and listed first.
+const MAIN_TABLE = 0;
+const TABLES = [
+  ...(config.mainTableLabel ? [MAIN_TABLE] : []),
+  ...Array.from({ length: config.tableCount }, (_, i) => i + 1),
+];
+
+function tableLabel(table) {
+  return table === MAIN_TABLE ? config.mainTableLabel : `Table ${table}`;
+}
 
 function loadProfile() {
-  const fromUrl = Number(new URLSearchParams(window.location.search).get("table"));
+  const param = (new URLSearchParams(window.location.search).get("table") || "").toLowerCase();
+  const fromUrl = param === "main" ? MAIN_TABLE : param ? Number(param) : NaN;
   let saved = {};
   try {
     saved = JSON.parse(localStorage.getItem(PROFILE_KEY)) || {};
@@ -104,8 +114,8 @@ function StoryForm({ onPosted }) {
     e.preventDefault();
     const name = profile.name.trim();
     const text = story.trim();
-    const table = Number(profile.table);
-    if (!TABLES.includes(table)) return setError("Pick your table number.");
+    const table = profile.table === "" ? NaN : Number(profile.table);
+    if (!TABLES.includes(table)) return setError("Pick your table.");
     if (!name) return setError("Tell us your name.");
     if (text.length < 3) return setError("Share a little story — even one line is perfect.");
 
@@ -141,7 +151,7 @@ function StoryForm({ onPosted }) {
       className="space-y-4 rounded-2xl border border-gold/40 bg-gradient-to-br from-gold/10 via-charcoal-light/60 to-charcoal-light/40 p-6 theme-light:from-gold/10 theme-light:via-champagne/60 theme-light:to-champagne/40"
     >
       <h3 className="font-display text-2xl text-gold">Share a story</h3>
-      <div className="grid grid-cols-[6.5rem_1fr] gap-3">
+      <div className="grid grid-cols-[7rem_1fr] gap-3">
         <div>
           <label htmlFor="sw-table" className="mb-1 block text-[0.65rem] uppercase tracking-[0.2em] text-gold-light">
             Table
@@ -157,7 +167,7 @@ function StoryForm({ onPosted }) {
             </option>
             {TABLES.map((t) => (
               <option key={t} value={t} className="bg-charcoal-light">
-                {t}
+                {t === MAIN_TABLE ? "Main" : t}
               </option>
             ))}
           </select>
@@ -247,7 +257,7 @@ function Leaderboard({ tables, activeTable, onPick }) {
                       {rank === 0 ? "👑" : rank + 1}
                     </span>
                     <span className="flex-1 font-display text-lg text-ivory theme-light:text-charcoal-deep">
-                      Table {t.table}
+                      {tableLabel(t.table)}
                     </span>
                     <span className="font-display text-lg text-gold">{t.points}</span>
                   </div>
@@ -303,7 +313,7 @@ function StoryCard({ story, now, mine, me, mc }) {
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <p className="font-medium text-ivory theme-light:text-charcoal-deep">{story.name}</p>
           <span className="rounded-full border border-gold/40 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.15em] text-gold">
-            Table {story.table}
+            {tableLabel(story.table)}
           </span>
           <span className="text-[0.65rem] text-ivory/40 theme-light:text-charcoal-deep/50">
             {timeAgo(story.ts, now)}
@@ -351,7 +361,7 @@ export default function StoryWall() {
     () =>
       Object.entries(value || {})
         .map(([id, s]) => ({ id, ...s }))
-        .filter((s) => s.name && s.story && s.table)
+        .filter((s) => s.name && s.story && Number.isInteger(s.table))
         .sort((a, b) => (b.ts || 0) - (a.ts || 0)),
     [value]
   );
@@ -368,7 +378,7 @@ export default function StoryWall() {
     return [...byTable.values()].sort((a, b) => b.points - a.points || a.table - b.table);
   }, [stories]);
 
-  const visible = activeTable ? stories.filter((s) => s.table === activeTable) : stories;
+  const visible = activeTable !== null ? stories.filter((s) => s.table === activeTable) : stories;
   const activeInfo = tables.find((t) => t.table === activeTable);
 
   return (
@@ -428,7 +438,7 @@ export default function StoryWall() {
                     activeTable === t ? "border-gold bg-gold text-charcoal-deep" : "border-gold/30 text-gold hover:border-gold"
                   }`}
                 >
-                  Table {t}
+                  {tableLabel(t)}
                 </button>
               ))}
           </div>
@@ -440,7 +450,7 @@ export default function StoryWall() {
               animate={{ opacity: 1, y: 0 }}
               className="mb-6 rounded-2xl border border-gold/40 bg-gold/5 p-5"
             >
-              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-gold-light">Seated at table {activeInfo.table}</p>
+              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-gold-light">Seated at {tableLabel(activeInfo.table)}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {activeInfo.guests.map((g) => (
                   <span
