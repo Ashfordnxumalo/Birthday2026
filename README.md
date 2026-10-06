@@ -127,7 +127,24 @@ for a private party, not real security, so don't share the `mc` link.
 
 ---
 
-## 6. Deploy (Netlify or Vercel)
+## 6. Deploy
+
+**Own hosting (current setup: https://mnx-consulting.co.za/events/)**
+
+The site is built for the `/events/` folder (`base` in `vite.config.js`).
+Keys from `.env` are baked in at build time, so build on a machine that has
+the full `.env` file:
+
+1. Make sure `.env` has the Formspree and EmailJS values *and*
+   `VITE_FIREBASE_DB_URL` and `VITE_MC_PIN`.
+2. Run `npm install`, then `npm run build`.
+3. Upload the **contents** of `dist/` into the `events/` folder on the server,
+   replacing the old `index.html` and `assets/` (keep `photos/` and `music/`
+   or re-upload them from `dist/`).
+4. Check `https://mnx-consulting.co.za/events/?tab=stories`. The status pill
+   should read **Live**.
+
+The tabs use `?tab=` query links, so no server rewrite rules are needed.
 
 **Netlify**
 1. Push the project to GitHub.
