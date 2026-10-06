@@ -1,0 +1,27 @@
+﻿{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "live": {
+      "programme": {
+        ".read": true,
+        ".write": true,
+        ".validate": "newData.hasChildren(['index', 'at']) && newData.child('index').isNumber()"
+      }
+    },
+    "stories": {
+      ".read": true,
+      "$id": {
+        ".write": true,
+        ".validate": "newData.hasChildren(['name', 'table', 'story', 'ts'])",
+        "name": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "table": { ".validate": "newData.isNumber()" },
+        "story": { ".validate": "newData.isString() && newData.val().length <= 280" },
+        "device": { ".validate": "newData.isString() && newData.val().length <= 64" },
+        "ts": { ".validate": "newData.isNumber() && newData.val() <= now" },
+        "hearts": { "$device": { ".validate": "newData.val() === true" } },
+        "$other": { ".validate": false }
+      }
+    }
+  }
+}
