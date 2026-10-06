@@ -54,6 +54,69 @@ export const config = {
     publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "",
   },
 
+  // ---- Event-night tabs (Programme + Story Wall) ----
+  // Set to false to hide the tab bar and show only the invitation.
+  showEventNightTabs: true,
+  // On the day (from 2 hours before the start until the next morning) the site
+  // opens straight on the Programme tab instead of the invitation.
+  eventNightAutoOpen: true,
+  // Number of numbered tables in the venue (Story Wall table picker + leaderboard).
+  tableCount: 15,
+  // Adds a "Main Table" option (stored as table 0). Set "" to leave it out.
+  mainTableLabel: "Main Table",
+
+  // Final programme. `person` is optional. Messages under "Birthday messages"
+  // go in `messages`. Keep names exactly as they should appear on screen.
+  programmeDirector: "Mr Ash Nxumalo",
+  programmeDurationLabel: "5 hours",
+  programme: [
+    {
+      act: "The Ceremony",
+      items: [
+        { title: "Arrival of guests", icon: "🥂" },
+        { title: "Programme Director", person: "Mr Ash Nxumalo", icon: "🎙️" },
+        { title: "Grand entrance of celebrant and family", icon: "👑" },
+        { title: "Opening prayer", icon: "🙏" },
+        { title: "Welcoming", person: "Mr X Nobuya", icon: "🤝" },
+        { title: "Purpose of the day", person: "Mrs M Mlondi", icon: "✨" },
+        { title: "Introduction of the speaker", person: "Pst G Makamba", icon: "📜" },
+        { title: "Word of God", icon: "📖" },
+        { title: "Families — well wishes to the celebrant", icon: "💐" },
+        { title: "Prayer for food", icon: "🙏" },
+      ],
+    },
+    {
+      act: "Dinner",
+      items: [{ title: "Dinner is served", icon: "🍽️" }],
+    },
+    {
+      act: "The Celebration",
+      items: [
+        {
+          title: "Birthday messages",
+          icon: "💌",
+          messages: [
+            { from: "Church", person: "Mr M Ndube" },
+            { from: "Friends", person: "Pst N Yeko" },
+            { from: "Neighbours", person: "Mr M Mbangata" },
+            { from: "Spouse and kids" },
+          ],
+        },
+        { title: "Cutting of the cake", person: "Pstrs Z Nxumalo", icon: "🎂" },
+        { title: "Proposal of toast", person: "Mr A Bango", icon: "🍾" },
+        { title: "Reply", person: "The celebrant", icon: "🎤" },
+        { title: "Vote of thanks", person: "Mr M Lugetye", icon: "💛" },
+        { title: "Closing prayer", icon: "🙏" },
+      ],
+    },
+  ],
+
+  // Live features (shared Story Wall + "Now happening" on the programme).
+  // Uses a Firebase Realtime Database — see README section 5.
+  firebaseDbUrl: (import.meta.env.VITE_FIREBASE_DB_URL || "").replace(/\/+$/, ""),
+  // PIN for the Programme Director's controls: open the site with ?mc=<PIN>.
+  mcPin: import.meta.env.VITE_MC_PIN || "",
+
   // ---- Site / sharing ----
   siteUrl: "https://mnx-consulting.co.za/events", // used by Share button
 };
