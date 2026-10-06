@@ -32,19 +32,13 @@ export const config = {
   hostContactPhone: "+27815000053",  // TODO
 
   // ---- Calendar (.ics) ----
-  calendarTitle: "Melusi Ndaba's 45th Birthday — Black Tie",
+  calendarTitle: "Malusi Ndaba's 45th Birthday: Black Tie",
   calendarDescription: "Join us for an elegant black-tie celebration.",
   calendarDurationHours: 5,           // event length for the .ics file
 
   // ---- Background music (optional) ----
   // Drop an mp3 in /public/music and reference its filename here, or leave "" to hide the toggle.
   musicSrc: musicFile("Hymn for Taiwa.mp3"),
-
-  // ---- Theme toggle (moon/sun button, optional) ----
-  // Set to false to hide the toggle button entirely.
-  showThemeToggle: false,
-  // Theme shown on first visit, before the guest picks one: "dark" or "light".
-  defaultTheme: "dark",
 
   // ---- Integrations: values read from .env (see .env.example) ----
   formspreeEndpoint: import.meta.env.VITE_FORMSPREE_ENDPOINT || "",
@@ -73,28 +67,27 @@ export const config = {
     {
       act: "The Ceremony",
       items: [
-        { title: "Arrival of guests", icon: "🥂" },
-        { title: "Programme Director", person: "Mr Ash Nxumalo", icon: "🎙️" },
-        { title: "Grand entrance of celebrant and family", icon: "👑" },
-        { title: "Opening prayer", icon: "🙏" },
-        { title: "Welcoming", person: "Mr X Nobuya", icon: "🤝" },
-        { title: "Purpose of the day", person: "Mrs M Mlondi", icon: "✨" },
-        { title: "Introduction of the speaker", person: "Pst G Makamba", icon: "📜" },
-        { title: "Word of God", icon: "📖" },
-        { title: "Families — well wishes to the celebrant", icon: "💐" },
-        { title: "Prayer for food", icon: "🙏" },
+        { title: "Arrival of guests" },
+        { title: "Programme Director", person: "Mr Ash Nxumalo" },
+        { title: "Grand entrance of celebrant and family" },
+        { title: "Opening prayer" },
+        { title: "Welcoming", person: "Mr X Nobuya" },
+        { title: "Purpose of the day", person: "Mrs M Mlondi" },
+        { title: "Introduction of the speaker", person: "Pst G Makamba" },
+        { title: "Word of God" },
+        { title: "Families: well wishes to the celebrant" },
+        { title: "Prayer for food" },
       ],
     },
     {
       act: "Dinner",
-      items: [{ title: "Dinner is served", icon: "🍽️" }],
+      items: [{ title: "Dinner is served" }],
     },
     {
       act: "The Celebration",
       items: [
         {
           title: "Birthday messages",
-          icon: "💌",
           messages: [
             { from: "Church", person: "Mr M Ndube" },
             { from: "Friends", person: "Pst N Yeko" },
@@ -102,11 +95,11 @@ export const config = {
             { from: "Spouse and kids" },
           ],
         },
-        { title: "Cutting of the cake", person: "Pstrs Z Nxumalo", icon: "🎂" },
-        { title: "Proposal of toast", person: "Mr A Bango", icon: "🍾" },
-        { title: "Reply", person: "The celebrant", icon: "🎤" },
-        { title: "Vote of thanks", person: "Mr M Lugetye", icon: "💛" },
-        { title: "Closing prayer", icon: "🙏" },
+        { title: "Cutting of the cake", person: "Pstrs Z Nxumalo" },
+        { title: "Proposal of toast", person: "Mr A Bango" },
+        { title: "Reply", person: "The celebrant" },
+        { title: "Vote of thanks", person: "Mr M Lugetye" },
+        { title: "Closing prayer" },
       ],
     },
   ],

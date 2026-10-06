@@ -26,7 +26,7 @@ export default function MusicToggle() {
         onClick={toggle}
         aria-label={playing ? "Mute background music" : "Play background music"}
         aria-pressed={playing}
-        className="focus-gold fixed right-5 top-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-gold/50 bg-charcoal-light/70 theme-light:bg-champagne/70 text-gold backdrop-blur-sm transition-colors hover:bg-gold hover:text-charcoal-deep"
+        className="focus-gold fixed right-5 top-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-gold/50 bg-canvas-light/70 text-gold backdrop-blur-sm transition-colors hover:bg-gold-light hover:text-ink"
       >
         {playing ? "♪" : "♪̸"}
       </button>

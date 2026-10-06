@@ -86,17 +86,17 @@ function celebrate() {
     particleCount: 90,
     spread: 70,
     origin: { y: 0.7 },
-    colors: ["#D4AF37", "#C9A227", "#f4efe4", "#e8cf7e"],
+    colors: ["#a58238", "#7f6123", "#dcc48a", "#c2a25c"],
   });
 }
 
 function StatusPill({ status }) {
   const label = { live: "Live", connecting: "Connecting…", local: "Preview mode" }[status];
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 px-3 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold-light">
+    <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 px-3 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold-deep">
       <span
         className={`h-2 w-2 rounded-full ${
-          status === "live" ? "bg-emerald-400" : status === "local" ? "bg-gold" : "animate-pulse bg-gold/60"
+          status === "live" ? "bg-emerald-500" : status === "local" ? "bg-gold" : "animate-pulse bg-gold/60"
         }`}
       />
       {label}
@@ -117,7 +117,7 @@ function StoryForm({ onPosted }) {
     const table = profile.table === "" ? NaN : Number(profile.table);
     if (!TABLES.includes(table)) return setError("Pick your table.");
     if (!name) return setError("Tell us your name.");
-    if (text.length < 3) return setError("Share a little story — even one line is perfect.");
+    if (text.length < 3) return setError("Share a little story. Even one line is perfect.");
 
     setError("");
     setStatus("sending");
@@ -142,18 +142,18 @@ function StoryForm({ onPosted }) {
   };
 
   const field =
-    "focus-gold w-full rounded-lg border border-gold/30 bg-charcoal-deep/60 px-4 py-2.5 text-ivory outline-none placeholder:text-ivory/30 theme-light:bg-champagne-light/70 theme-light:text-charcoal-deep";
+    "focus-gold w-full rounded-lg border border-gold/30 bg-canvas-light/60 px-4 py-2.5 text-ink outline-none placeholder:text-ink/30";
 
   return (
     <form
       onSubmit={submit}
       noValidate
-      className="space-y-4 rounded-2xl border border-gold/40 bg-gradient-to-br from-gold/10 via-charcoal-light/60 to-charcoal-light/40 p-6 theme-light:from-gold/10 theme-light:via-champagne/60 theme-light:to-champagne/40"
+      className="space-y-4 rounded-2xl border border-gold/40 bg-gradient-to-br from-gold/10 via-canvas-light/60 to-canvas-light/40 p-6"
     >
       <h3 className="font-display text-2xl text-gold">Share a story</h3>
       <div className="grid grid-cols-[7rem_1fr] gap-3">
         <div>
-          <label htmlFor="sw-table" className="mb-1 block text-[0.65rem] uppercase tracking-[0.2em] text-gold-light">
+          <label htmlFor="sw-table" className="mb-1 block text-[0.65rem] uppercase tracking-[0.2em] text-gold-deep">
             Table
           </label>
           <select
@@ -162,18 +162,18 @@ function StoryForm({ onPosted }) {
             onChange={(e) => setProfile((p) => ({ ...p, table: e.target.value }))}
             className={field}
           >
-            <option value="" className="bg-charcoal-light">
-              —
+            <option value="" className="bg-canvas-light">
+              Select
             </option>
             {TABLES.map((t) => (
-              <option key={t} value={t} className="bg-charcoal-light">
+              <option key={t} value={t} className="bg-canvas-light">
                 {t === MAIN_TABLE ? "Main" : t}
               </option>
             ))}
           </select>
         </div>
         <div>
-          <label htmlFor="sw-name" className="mb-1 block text-[0.65rem] uppercase tracking-[0.2em] text-gold-light">
+          <label htmlFor="sw-name" className="mb-1 block text-[0.65rem] uppercase tracking-[0.2em] text-gold-deep">
             Your name
           </label>
           <input
@@ -188,7 +188,7 @@ function StoryForm({ onPosted }) {
         </div>
       </div>
       <div>
-        <label htmlFor="sw-story" className="mb-1 block text-[0.65rem] uppercase tracking-[0.2em] text-gold-light">
+        <label htmlFor="sw-story" className="mb-1 block text-[0.65rem] uppercase tracking-[0.2em] text-gold-deep">
           Your story about Mr Party
         </label>
         <textarea
@@ -200,7 +200,7 @@ function StoryForm({ onPosted }) {
           placeholder={`The time ${config.honoreeName.split(" ")[0]}…`}
           className={`${field} resize-none`}
         />
-        <p className="mt-1 text-right text-[0.65rem] text-ivory/40 theme-light:text-charcoal-deep/50">
+        <p className="mt-1 text-right text-[0.65rem] text-ink/40">
           {story.length}/{STORY_MAX}
         </p>
       </div>
@@ -208,15 +208,15 @@ function StoryForm({ onPosted }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="focus-gold w-full rounded-full bg-gold-shimmer bg-[length:200%_auto] py-3 text-sm font-medium uppercase tracking-[0.2em] text-charcoal-deep transition-transform hover:scale-[1.01] animate-shimmer disabled:opacity-60"
+        className="focus-gold w-full rounded-full bg-gold-shimmer bg-[length:200%_auto] py-3 text-sm font-medium uppercase tracking-[0.2em] text-ink transition-transform hover:scale-[1.01] animate-shimmer disabled:opacity-60"
       >
         {status === "sending" ? "Posting…" : "Post to the wall"}
       </button>
 
       <div role="status" aria-live="polite" className="min-h-[1.25rem] text-center text-sm">
-        {error && <p className="text-red-400">{error}</p>}
+        {error && <p className="text-red-700">{error}</p>}
         {status === "sent" && <p className="text-gold">Posted! +{POINTS_PER_STORY} points for your table 🎉</p>}
-        {status === "error" && <p className="text-red-400">Couldn't post just now — please try again.</p>}
+        {status === "error" && <p className="text-red-700">Couldn't post just now. Please try again.</p>}
       </div>
     </form>
   );
@@ -227,16 +227,16 @@ function Leaderboard({ tables, activeTable, onPick }) {
   const maxPoints = leader?.points || 1;
 
   return (
-    <div className="rounded-2xl border border-gold/30 bg-charcoal-light/50 p-6 theme-light:bg-champagne/50">
+    <div className="rounded-2xl border border-gold/30 bg-canvas-light/50 p-6">
       <div>
         <h3 className="font-display text-2xl text-gold">Table leaderboard</h3>
-        <p className="mt-1 text-[0.65rem] uppercase tracking-[0.2em] text-gold-light">
+        <p className="mt-1 text-[0.65rem] uppercase tracking-[0.2em] text-gold-deep">
           Story = {POINTS_PER_STORY} pts · ❤ = {POINTS_PER_HEART} pts
         </p>
       </div>
 
       {tables.length === 0 ? (
-        <p className="mt-6 text-sm text-ivory/60 theme-light:text-charcoal-deep/60">
+        <p className="mt-6 text-sm text-ink/60">
           No points on the board yet. Be the first table to score!
         </p>
       ) : (
@@ -256,7 +256,7 @@ function Leaderboard({ tables, activeTable, onPick }) {
                     <span className="w-6 text-center font-display text-lg text-gold">
                       {rank === 0 ? "👑" : rank + 1}
                     </span>
-                    <span className="flex-1 font-display text-lg text-ivory theme-light:text-charcoal-deep">
+                    <span className="flex-1 font-display text-lg text-ink">
                       {tableLabel(t.table)}
                     </span>
                     <span className="font-display text-lg text-gold">{t.points}</span>
@@ -269,8 +269,8 @@ function Leaderboard({ tables, activeTable, onPick }) {
                       transition={{ duration: 0.6 }}
                     />
                   </div>
-                  <p className="ml-9 mt-2 text-xs text-ivory/55 theme-light:text-charcoal-deep/60">
-                    <span className="text-gold-light">Seated:</span> {t.guests.join(", ")}
+                  <p className="ml-9 mt-2 text-xs text-ink/55">
+                    <span className="text-gold-deep">Seated:</span> {t.guests.join(", ")}
                   </p>
                 </button>
               </motion.li>
@@ -307,19 +307,19 @@ function StoryCard({ story, now, mine, me, mc }) {
         className={`min-w-0 max-w-[85%] rounded-2xl border px-4 py-3 ${
           mine
             ? "rounded-tr-sm border-gold/60 bg-gold/10"
-            : "rounded-tl-sm border-gold/20 bg-charcoal-light/60 theme-light:bg-champagne/60"
+            : "rounded-tl-sm border-gold/20 bg-canvas-light/60"
         }`}
       >
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <p className="font-medium text-ivory theme-light:text-charcoal-deep">{story.name}</p>
+          <p className="font-medium text-ink">{story.name}</p>
           <span className="rounded-full border border-gold/40 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.15em] text-gold">
             {tableLabel(story.table)}
           </span>
-          <span className="text-[0.65rem] text-ivory/40 theme-light:text-charcoal-deep/50">
+          <span className="text-[0.65rem] text-ink/40">
             {timeAgo(story.ts, now)}
           </span>
         </div>
-        <p className="mt-2 whitespace-pre-line break-words font-serif text-lg leading-snug text-ivory/90 theme-light:text-charcoal-deep/90">
+        <p className="mt-2 whitespace-pre-line break-words font-serif text-lg leading-snug text-ink/90">
           {story.story}
         </p>
         <div className="mt-2 flex items-center gap-3">
@@ -330,7 +330,7 @@ function StoryCard({ story, now, mine, me, mc }) {
             aria-pressed={hearted}
             aria-label={`${hearted ? "Remove heart from" : "Heart"} ${story.name}'s story`}
             className={`focus-gold flex items-center gap-1 rounded-full px-2 py-0.5 text-sm transition-colors ${
-              hearted ? "text-rose-400" : "text-ivory/50 hover:text-rose-300 theme-light:text-charcoal-deep/50"
+              hearted ? "text-rose-600" : "text-ink/50 hover:text-rose-500"
             }`}
           >
             {hearted ? "❤" : "♡"} <span className="text-xs">{hearts || ""}</span>
@@ -339,7 +339,7 @@ function StoryCard({ story, now, mine, me, mc }) {
             <button
               type="button"
               onClick={() => window.confirm("Remove this story?") && removeValue(`stories/${story.id}`)}
-              className="focus-gold text-[0.65rem] uppercase tracking-[0.15em] text-red-400/80 hover:text-red-400"
+              className="focus-gold text-[0.65rem] uppercase tracking-[0.15em] text-red-700/80 hover:text-red-700"
             >
               Remove
             </button>
@@ -384,24 +384,24 @@ export default function StoryWall() {
   return (
     <div className="px-5 pb-16 pt-24">
       <Reveal className="mx-auto max-w-3xl text-center">
-        <p className="text-xs uppercase tracking-[0.35em] text-gold-light">The table game</p>
+        <p className="text-xs uppercase tracking-[0.35em] text-gold-deep">The table game</p>
         <h1 className="mt-4 font-display text-4xl font-semibold text-gradient-gold sm:text-6xl">
           Tell Us About Mr Party
         </h1>
-        <p className="mx-auto mt-5 max-w-xl font-serif text-lg italic text-ivory/75 theme-light:text-charcoal-deep/75">
+        <p className="mx-auto mt-5 max-w-xl font-serif text-lg italic text-ink/75">
           Share your favourite story about {config.honoreeName}. Every story scores {POINTS_PER_STORY} points
           for your table, every ❤ it collects adds {POINTS_PER_HEART} more. The leading table at the toast takes the
           crown.
         </p>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
           <StatusPill status={status} />
-          <span className="text-xs uppercase tracking-[0.2em] text-ivory/50 theme-light:text-charcoal-deep/60">
+          <span className="text-xs uppercase tracking-[0.2em] text-ink/50">
             {stories.length} {stories.length === 1 ? "story" : "stories"} · {tables.length}{" "}
             {tables.length === 1 ? "table" : "tables"} playing
           </span>
         </div>
         {!isLive && (
-          <p className="mx-auto mt-4 max-w-md text-xs text-ivory/40 theme-light:text-charcoal-deep/50">
+          <p className="mx-auto mt-4 max-w-md text-xs text-ink/40">
             Preview mode: stories are saved on this device only until the live database is connected.
           </p>
         )}
@@ -420,7 +420,7 @@ export default function StoryWall() {
               onClick={() => setActiveTable(null)}
               aria-pressed={activeTable === null}
               className={`focus-gold rounded-full border px-4 py-1.5 text-xs uppercase tracking-[0.15em] transition-colors ${
-                activeTable === null ? "border-gold bg-gold text-charcoal-deep" : "border-gold/30 text-gold hover:border-gold"
+                activeTable === null ? "border-gold bg-gold-light text-ink" : "border-gold/30 text-gold hover:border-gold"
               }`}
             >
               All tables
@@ -435,7 +435,7 @@ export default function StoryWall() {
                   onClick={() => setActiveTable(t)}
                   aria-pressed={activeTable === t}
                   className={`focus-gold rounded-full border px-4 py-1.5 text-xs uppercase tracking-[0.15em] transition-colors ${
-                    activeTable === t ? "border-gold bg-gold text-charcoal-deep" : "border-gold/30 text-gold hover:border-gold"
+                    activeTable === t ? "border-gold bg-gold-light text-ink" : "border-gold/30 text-gold hover:border-gold"
                   }`}
                 >
                   {tableLabel(t)}
@@ -450,12 +450,12 @@ export default function StoryWall() {
               animate={{ opacity: 1, y: 0 }}
               className="mb-6 rounded-2xl border border-gold/40 bg-gold/5 p-5"
             >
-              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-gold-light">Seated at {tableLabel(activeInfo.table)}</p>
+              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-gold-deep">Seated at {tableLabel(activeInfo.table)}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {activeInfo.guests.map((g) => (
                   <span
                     key={g}
-                    className="flex items-center gap-2 rounded-full border border-gold/30 py-1 pl-1 pr-3 text-sm text-ivory/90 theme-light:text-charcoal-deep/90"
+                    className="flex items-center gap-2 rounded-full border border-gold/30 py-1 pl-1 pr-3 text-sm text-ink/90"
                   >
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/20 text-[0.6rem] text-gold">
                       {initials(g)}
@@ -464,7 +464,7 @@ export default function StoryWall() {
                   </span>
                 ))}
               </div>
-              <p className="mt-3 text-xs text-ivory/50 theme-light:text-charcoal-deep/60">
+              <p className="mt-3 text-xs text-ink/50">
                 {activeInfo.stories} {activeInfo.stories === 1 ? "story" : "stories"} · {activeInfo.points} points
               </p>
             </motion.div>
@@ -475,7 +475,7 @@ export default function StoryWall() {
               <p className="text-4xl" aria-hidden="true">
                 ❝
               </p>
-              <p className="mt-3 font-serif text-xl italic text-ivory/60 theme-light:text-charcoal-deep/60">
+              <p className="mt-3 font-serif text-xl italic text-ink/60">
                 The wall is waiting for its first story…
               </p>
             </div>

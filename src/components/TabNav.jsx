@@ -10,7 +10,7 @@ export default function TabNav({ tab, onChange }) {
     >
       <div
         role="tablist"
-        className="flex gap-1 rounded-full border border-gold/40 bg-charcoal-deep/80 p-1 shadow-[0_10px_40px_rgba(0,0,0,0.6)] backdrop-blur-md theme-light:bg-champagne-light/80"
+        className="flex gap-1 rounded-full border border-gold/40 bg-canvas-light/80 p-1 shadow-[0_10px_40px_rgba(90,70,30,0.15)] backdrop-blur-md"
       >
         {TABS.map((t) => {
           const active = t.id === tab;
@@ -22,7 +22,7 @@ export default function TabNav({ tab, onChange }) {
               aria-selected={active}
               onClick={() => onChange(t.id)}
               className={`focus-gold relative rounded-full px-3 py-2.5 text-[0.65rem] uppercase tracking-[0.12em] transition-colors sm:px-6 sm:text-xs sm:tracking-[0.18em] ${
-                active ? "text-charcoal-deep" : "text-gold-light hover:text-gold"
+                active ? "text-ink" : "text-gold-deep hover:text-gold"
               }`}
             >
               {active && (

@@ -1,35 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        charcoal: {
-          DEFAULT: "#0d0d0f",
-          light: "#16161a",
-          deep: "#070708",
+        // Warm ivory page and white cards.
+        canvas: {
+          DEFAULT: "#f8f4ec",
+          light: "#fffdf9",
         },
-        ivory: "#f4efe4",
-        champagne: {
-          DEFAULT: "#f3ead9",
-          light: "#fbf6ec",
-          deep: "#e7d9bd",
-        },
+        // Soft warm charcoal for text — gentler than pure black.
+        ink: "#2e2924",
         gold: {
-          DEFAULT: "#D4AF37",
-          deep: "#C9A227",
-          light: "#e8cf7e",
+          DEFAULT: "#a58238", // headings, borders, icons
+          deep: "#7f6123", // small text that must stay readable on ivory
+          light: "#dcc48a", // soft fills behind ink text (buttons, pills)
         },
       },
       fontFamily: {
-        display: ["'Playfair Display'", "'Cormorant Garamond'", "serif"],
+        display: ["'Cinzel'", "'Cormorant Garamond'", "serif"],
+        script: ["'Pinyon Script'", "'Cormorant Garamond'", "cursive"],
         serif: ["'Cormorant Garamond'", "serif"],
         sans: ["'Jost'", "'Inter'", "sans-serif"],
       },
       backgroundImage: {
         "gold-shimmer":
-          "linear-gradient(120deg, #C9A227 0%, #f3e3a3 25%, #D4AF37 50%, #f3e3a3 75%, #C9A227 100%)",
+          "linear-gradient(120deg, #d4b46a 0%, #eedfb5 25%, #dcc48a 50%, #eedfb5 75%, #d4b46a 100%)",
       },
       keyframes: {
         shimmer: {
@@ -54,9 +50,5 @@ export default {
       },
     },
   },
-  plugins: [
-    function ({ addVariant }) {
-      addVariant("theme-light", ".theme-light &");
-    },
-  ],
+  plugins: [],
 };

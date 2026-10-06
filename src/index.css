@@ -21,11 +21,7 @@ html {
 }
 
 body {
-  @apply bg-charcoal text-ivory font-sans antialiased transition-colors duration-500;
-}
-
-body.theme-light {
-  @apply bg-champagne text-charcoal-deep;
+  @apply bg-canvas text-ink font-sans antialiased;
 }
 
 .gold-divider {
@@ -33,7 +29,7 @@ body.theme-light {
 }
 
 .text-gradient-gold {
-  background: linear-gradient(120deg, #c9a227, #f3e3a3, #d4af37, #f3e3a3, #c9a227);
+  background: linear-gradient(120deg, #7f6123, #c2a25c, #9a7630, #c2a25c, #7f6123);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -42,6 +38,6 @@ body.theme-light {
 }
 
 .focus-gold:focus-visible {
-  outline: 2px solid #d4af37;
+  outline: 2px solid #a58238;
   outline-offset: 2px;
 }

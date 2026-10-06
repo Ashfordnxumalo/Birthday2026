@@ -4,7 +4,7 @@ An elegant, single-page birthday invitation built with React + Vite, Tailwind
 CSS, and Framer Motion. Features a live countdown, RSVP form (emailed to the
 host via Formspree), automated guest confirmation emails (EmailJS), gold
 confetti, a photo gallery with lightbox, an embedded venue map, add-to-calendar
-(.ics), share button, and a charcoal/champagne theme toggle.
+(.ics), share button, and a light ivory-and-gold palette.
 
 ---
 
@@ -121,7 +121,10 @@ everyone's phones:
 **Programme Director controls.** Set `VITE_MC_PIN` and open
 `…/events/?tab=programme&mc=<PIN>` on the PD's phone. *Start / Next / Prev*
 moves the "Now happening" marker, and every guest's screen follows live. You
-can also tap any item to jump to it. With the PIN in the URL, the Story Wall
+can also tap any item to jump to it. *Edit* opens the running order so the PD
+can rename, add, remove or reorder items on the night; saved changes show on
+every phone straight away, and *Restore original* goes back to `config.js`
+(re-publish `firebase.rules.json` after pulling this change). With the PIN in the URL, the Story Wall
 shows a *Remove* button on each story for moderation. The PIN is a light gate
 for a private party, not real security, so don't share the `mc` link.
 
@@ -182,7 +185,7 @@ EMAIL_TEMPLATE.md    # ← paste into EmailJS
 firebase.rules.json  # ← paste into Firebase Realtime Database rules
 src/
   components/        # Hero, Countdown, Details, RSVP, Gallery, Map, Footer, etc.
-  lib/                # ics generator, share helper, theme context, reduced-motion hook
+  lib/                # ics generator, share helper, reduced-motion hook
 public/
   music/              # optional background track
 ```

@@ -31,14 +31,14 @@ export default function Details() {
       <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
         {CARDS.map((card, i) => (
           <Reveal key={card.title} delay={i * 0.15}>
-            <div className="h-full rounded-xl border border-gold/30 bg-charcoal-light/50 theme-light:bg-champagne/50 p-8 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-gold">
+            <div className="h-full rounded-xl border border-gold/30 bg-canvas-light/50 p-8 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-gold">
               <div className="mb-4 text-3xl" aria-hidden="true">
                 {card.icon}
               </div>
               <h3 className="font-display text-xl text-gold">{card.title}</h3>
               <div className="gold-divider my-4 w-12" />
               {card.lines.map((line) => (
-                <p key={line} className="text-sm text-ivory/80 theme-light:text-charcoal-deep/80">
+                <p key={line} className="text-sm text-ink/80">
                   {line}
                 </p>
               ))}

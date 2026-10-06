@@ -50,11 +50,11 @@ export default function Countdown() {
         >
           {UNITS.map((unit, i) => (
             <Reveal key={unit.key} delay={i * 0.1}>
-              <div className="rounded-lg border border-gold/40 bg-charcoal-light/60 theme-light:bg-champagne/60 px-4 py-6 backdrop-blur-sm">
+              <div className="rounded-lg border border-gold/40 bg-canvas-light/60 px-4 py-6 backdrop-blur-sm">
                 <span className="block font-display text-4xl text-gold sm:text-5xl">
                   {String(timeLeft[unit.key]).padStart(2, "0")}
                 </span>
-                <span className="mt-2 block text-xs uppercase tracking-[0.2em] text-ivory/60">
+                <span className="mt-2 block text-xs uppercase tracking-[0.2em] text-ink/60">
                   {unit.label}
                 </span>
               </div>
@@ -63,8 +63,8 @@ export default function Countdown() {
         </div>
       ) : (
         <Reveal delay={0.1}>
-          <p className="font-serif text-2xl italic text-ivory/90">
-            The celebration has begun — join us at {config.venueName}.
+          <p className="font-serif text-2xl italic text-ink/90">
+            The celebration has begun. Join us at {config.venueName}.
           </p>
         </Reveal>
       )}

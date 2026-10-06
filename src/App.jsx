@@ -1,7 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { config } from "../config.js";
-import { ThemeProvider } from "./lib/ThemeContext.jsx";
 import { useTab } from "./lib/useTab.js";
 import Hero from "./components/Hero.jsx";
 import Countdown from "./components/Countdown.jsx";
@@ -10,7 +9,6 @@ import RSVP from "./components/RSVP.jsx";
 import Gallery from "./components/Gallery.jsx";
 import LocationMap from "./components/LocationMap.jsx";
 import Footer from "./components/Footer.jsx";
-import ThemeToggle from "./components/ThemeToggle.jsx";
 import MusicToggle from "./components/MusicToggle.jsx";
 import TabNav from "./components/TabNav.jsx";
 import Programme from "./components/Programme.jsx";
@@ -36,8 +34,7 @@ export default function App() {
   const Page = PAGES[tab];
 
   return (
-    <ThemeProvider>
-      <ThemeToggle />
+    <>
       <MusicToggle />
       <AnimatePresence mode="wait">
         <motion.main
@@ -57,6 +54,6 @@ export default function App() {
           <TabNav tab={tab} onChange={setTab} />
         </>
       )}
-    </ThemeProvider>
+    </>
   );
 }

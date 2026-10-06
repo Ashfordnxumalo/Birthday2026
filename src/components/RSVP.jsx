@@ -27,7 +27,7 @@ function validate(form) {
 }
 
 function fireGoldConfetti() {
-  const colors = ["#D4AF37", "#C9A227", "#f4efe4", "#e8cf7e"];
+  const colors = ["#a58238", "#7f6123", "#dcc48a", "#c2a25c"];
   confetti({
     particleCount: 140,
     spread: 80,
@@ -121,7 +121,7 @@ export default function RSVP() {
       <Reveal className="mx-auto mb-12 max-w-2xl text-center">
         <h2 className="font-display text-3xl text-gold sm:text-4xl">RSVP</h2>
         <div className="gold-divider mt-6 mb-4" />
-        <p className="text-sm text-ivory/70 theme-light:text-charcoal-deep/70">
+        <p className="text-sm text-ink/70">
           Kindly respond by completing the form below.
         </p>
       </Reveal>
@@ -130,10 +130,10 @@ export default function RSVP() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="space-y-5 rounded-xl border border-gold/30 bg-charcoal-light/50 theme-light:bg-champagne/50 p-8"
+          className="space-y-5 rounded-xl border border-gold/30 bg-canvas-light/50 p-8"
         >
           <div>
-            <label htmlFor="name" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
+            <label htmlFor="name" className="mb-1 block text-xs uppercase tracking-wide text-gold-deep">
               Full Name
             </label>
             <input
@@ -144,17 +144,17 @@ export default function RSVP() {
               onChange={handleChange}
               aria-invalid={Boolean(errors.name)}
               aria-describedby={errors.name ? "name-error" : undefined}
-              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ivory theme-light:text-charcoal-deep outline-none"
+              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ink outline-none"
             />
             {errors.name && (
-              <p id="name-error" className="mt-1 text-xs text-red-400">
+              <p id="name-error" className="mt-1 text-xs text-red-700">
                 {errors.name}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="email" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
+            <label htmlFor="email" className="mb-1 block text-xs uppercase tracking-wide text-gold-deep">
               Email Address
             </label>
             <input
@@ -165,10 +165,10 @@ export default function RSVP() {
               onChange={handleChange}
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? "email-error" : undefined}
-              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ivory theme-light:text-charcoal-deep outline-none"
+              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ink outline-none"
             />
             {errors.email && (
-              <p id="email-error" className="mt-1 text-xs text-red-400">
+              <p id="email-error" className="mt-1 text-xs text-red-700">
                 {errors.email}
               </p>
             )}
@@ -176,7 +176,7 @@ export default function RSVP() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="attending" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
+              <label htmlFor="attending" className="mb-1 block text-xs uppercase tracking-wide text-gold-deep">
                 Attending?
               </label>
               <select
@@ -184,19 +184,19 @@ export default function RSVP() {
                 name="attending"
                 value={form.attending}
                 onChange={handleChange}
-                className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ivory theme-light:text-charcoal-deep outline-none"
+                className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ink outline-none"
               >
-                <option value="yes" className="bg-charcoal-light text-ivory">
+                <option value="yes" className="bg-canvas-light text-ink">
                   Joyfully Accepts
                 </option>
-                <option value="no" className="bg-charcoal-light text-ivory">
+                <option value="no" className="bg-canvas-light text-ink">
                   Regretfully Declines
                 </option>
               </select>
             </div>
 
             <div>
-              <label htmlFor="guests" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
+              <label htmlFor="guests" className="mb-1 block text-xs uppercase tracking-wide text-gold-deep">
                 Guests
               </label>
               <input
@@ -209,10 +209,10 @@ export default function RSVP() {
                 onChange={handleChange}
                 aria-invalid={Boolean(errors.guests)}
                 aria-describedby={errors.guests ? "guests-error" : undefined}
-                className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ivory theme-light:text-charcoal-deep outline-none"
+                className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ink outline-none"
               />
               {errors.guests && (
-                <p id="guests-error" className="mt-1 text-xs text-red-400">
+                <p id="guests-error" className="mt-1 text-xs text-red-700">
                   {errors.guests}
                 </p>
               )}
@@ -220,7 +220,7 @@ export default function RSVP() {
           </div>
 
           <div>
-            <label htmlFor="mobile" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
+            <label htmlFor="mobile" className="mb-1 block text-xs uppercase tracking-wide text-gold-deep">
               Please Share Your Mobile Number
             </label>
             <input
@@ -229,12 +229,12 @@ export default function RSVP() {
               type="tel"
               value={form.mobile}
               onChange={handleChange}
-              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ivory theme-light:text-charcoal-deep outline-none"
+              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ink outline-none"
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="mb-1 block text-xs uppercase tracking-wide text-gold-light">
+            <label htmlFor="message" className="mb-1 block text-xs uppercase tracking-wide text-gold-deep">
               Message (optional)
             </label>
             <textarea
@@ -243,14 +243,14 @@ export default function RSVP() {
               rows={3}
               value={form.message}
               onChange={handleChange}
-              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ivory theme-light:text-charcoal-deep outline-none"
+              className="focus-gold w-full rounded-md border border-gold/30 bg-transparent px-4 py-2 text-ink outline-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="focus-gold w-full rounded-full border border-gold bg-gold/10 py-3 text-sm uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-charcoal-deep disabled:opacity-50"
+            className="focus-gold w-full rounded-full border border-gold bg-gold/10 py-3 text-sm uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold-light hover:text-ink disabled:opacity-50"
           >
             {status === "submitting" ? "Sending..." : "Send RSVP"}
           </button>
@@ -258,11 +258,11 @@ export default function RSVP() {
           <div role="status" aria-live="polite">
             {status === "success" && (
               <p className="text-center text-sm text-gold">
-                Thank you — your RSVP has been received with delight.
+                Thank you! Your RSVP has been received with delight.
               </p>
             )}
             {status === "error" && (
-              <p className="text-center text-sm text-red-400">
+              <p className="text-center text-sm text-red-700">
                 Something went wrong sending your RSVP. Please try again or contact the host
                 directly.
               </p>
