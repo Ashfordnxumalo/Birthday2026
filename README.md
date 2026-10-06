@@ -83,13 +83,57 @@ guest confirmation email, and the RSVP still reaches the host via Formspree.
 
 ---
 
-## 5. Deploy (Netlify or Vercel)
+## 5. Event-night tabs: Programme & Story Wall
+
+A tab bar at the bottom of the site switches between **Invitation**,
+**Programme** and **Story Wall**. Each tab has its own link, so you can share or
+print a QR code for it:
+
+- `…/events/?tab=programme` is the running order of the day.
+- `…/events/?tab=stories` is the table game. Add `&table=4` to pre-select a
+  table, which works well for QR codes printed on each table.
+
+On the event day (from 2 hours before the start), the site opens on the
+Programme tab automatically. Edit the running order, the Programme Director,
+the number of tables and these switches in `config.js` (`programme`,
+`tableCount`, `showEventNightTabs`, `eventNightAutoOpen`).
+
+**Story Wall game:** guests pick their table, enter their name and post a short
+story about the celebrant ("Mr Party"). Each story earns their table 10 points,
+and each ❤ it receives earns 2 more. The leaderboard shows the leading table
+(👑) and who is seated at each table. Tap a table to see its guests and
+stories.
+
+**Live database (required for the night).** Without it, stories are only
+stored on the device they were typed on (preview mode). To share them between
+everyone's phones:
+
+1. Go to <https://console.firebase.google.com> → *Add project* (the free Spark
+   plan is enough).
+2. *Build → Realtime Database → Create database* (any location, start in
+   locked mode).
+3. Open the *Rules* tab, paste the contents of `firebase.rules.json`, and
+   *Publish*.
+4. Copy the database URL into `.env` as `VITE_FIREBASE_DB_URL`, then rebuild
+   and redeploy.
+
+**Programme Director controls.** Set `VITE_MC_PIN` and open
+`…/events/?tab=programme&mc=<PIN>` on the PD's phone. *Start / Next / Prev*
+moves the "Now happening" marker, and every guest's screen follows live. You
+can also tap any item to jump to it. With the PIN in the URL, the Story Wall
+shows a *Remove* button on each story for moderation. The PIN is a light gate
+for a private party, not real security, so don't share the `mc` link.
+
+---
+
+## 6. Deploy (Netlify or Vercel)
 
 **Netlify**
 1. Push the project to GitHub.
 2. In Netlify: *New site from Git* → pick the repo.
 3. Build command `npm run build`, publish directory `dist`.
-4. Add your `.env` variables under **Site settings → Environment variables**.
+4. Add your `.env` variables (including `VITE_FIREBASE_DB_URL` and
+   `VITE_MC_PIN`) under **Site settings → Environment variables**.
 5. Update `siteUrl` in `config.js` to your live URL (used by the Share
    button), then redeploy.
 
@@ -103,7 +147,7 @@ guest confirmation email, and the RSVP still reaches the host via Formspree.
 
 ---
 
-## 6. Accessibility & motion
+## 7. Accessibility & motion
 
 The site supports keyboard navigation, ARIA labels, sufficient contrast, and
 honours `prefers-reduced-motion` (particles, confetti, and reveal animations
@@ -111,12 +155,13 @@ are reduced or disabled for users who request it).
 
 ---
 
-## 7. Project structure
+## 8. Project structure
 
 ```
 config.js            # ← edit event details here
 .env.example         # ← copy to .env and add keys
 EMAIL_TEMPLATE.md    # ← paste into EmailJS
+firebase.rules.json  # ← paste into Firebase Realtime Database rules
 src/
   components/        # Hero, Countdown, Details, RSVP, Gallery, Map, Footer, etc.
   lib/                # ics generator, share helper, theme context, reduced-motion hook
