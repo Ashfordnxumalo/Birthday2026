@@ -1,3 +1,7 @@
+> **Archived 2026-11. Event delivered 10 Oct 2026. Live copy: https://mnx-consulting.co.za/events/. Successor: Ashfordnxumalo/MashiloInvitation (Firestore-backed, organiser + MC logins).**
+>
+> See [ARCHIVED.md](ARCHIVED.md).
+
 # 🥂 Black-Tie Birthday Invitation Website
 
 An elegant, single-page birthday invitation built with React + Vite, Tailwind
